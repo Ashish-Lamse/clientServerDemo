@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<base href="./app"/>
+
+<head>
+  <title>My AngularJS App</title>
+</head>
+
+<body>
+
+<div ui-view></div>
+<!-- We'll also add some navigation: -->
+
+</body>
+
+
+<!--Inbuild script files-->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+ <!-- <script src="https://raw.github.com/angular/angular.js/master/src/ngResource/resource.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+
+<!--Custom Script files-->
+<script src="module/demo.module.js"></script>
+<script src="module/demo.config.js"></script>
+<script src="module/demo.controller.js"></script>
+<script src="module/demoService.js"></script>
+<script src="module/demo.resourse.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<div class="row">
+<div class="col-sm-4" ng-repeat="user in allUsersData" style="border: 1px solid black;margin-left: 5px;margin-bottom: 5px;max-width: 350px">
+        <div class="row">
+            <div class="col-sm-7">
+                <b>Title:&nbsp;User Information</b>
+            </div>
+            <div class="col-sm-5">
+               <a href="" ng-click="deleteUser(user.firstname,user.lastname)"> <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+            </div>
+
+        </div>
+        <hr>
+        <b>First Name:</b>{{user.firstname}}<br>
+        <b>Last Name:</b>{{user.lastname}}
+
+
+</div>
+    </div>

@@ -3,6 +3,6 @@
  */
 
 (function(){
-    angular.module('demoApp',['ngResource','ui.router']);
+    angular.module('demoApp',['ngResource','ui.router','ui.bootstrap','dashboardModule']);
 })();
 

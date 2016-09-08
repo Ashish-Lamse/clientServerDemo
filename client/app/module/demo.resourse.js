@@ -28,6 +28,16 @@
             'insert' : {
                 method : 'POST',
                 url: '/insert'
+            },
+            'getUserRecored':{
+                method : 'GET',
+                isArray:true,
+                url: '/getUserRecored'
+
+            },
+            'deleteUser':{
+                method : 'POST',
+                url: '/deleteUser'
             }
         }
     }

@@ -1,6 +1,6 @@
 <!--This form will take info. about user and store it in database-->
 
-    <form novalidate ng-submit="insertInfo()">
+    <form novalidate ng-submit="insertInfo(user.firstName,user.lastName)">
         First Name:<br>
         <input type="text" ng-model="user.firstName"><br>
         Last Name:<br>
@@ -9,7 +9,6 @@
         <!--<button ng-click="reset()">RESET</button>-->
         <input type="submit" value="insert"/>
     </form>
-    <p>form = {{user}}</p>
-    <p>master = {{master}}</p>
+
 
 

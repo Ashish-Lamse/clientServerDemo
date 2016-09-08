@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html ng-app="demoApp">
-<base href="./app"/>
+<!--<base href="./app"/>-->
 
 <head>
+  <base href="/" />
   <title>My AngularJS App</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body>
 
-<div ui-view></div>
-<!-- We'll also add some navigation: -->
+<div style="background-color: lightgoldenrodyellow;border: 1px solid black">
+  <h2><b>User Information</b></h2>
+</div>
+
+<div class="row">
+  <div class="col-sm-2" style="background-color: lightcyan">
+    <a ui-sref="state1">Insert User</a><br>
+    <a ui-sref="state2">Show Dashboard</a>
+  </div>
+
+  <div class="col-sm-10" style="background-color: lightblue">
+    <div ui-view></div>
+  </div>
+</div>
+
+
+
+
+
 
 </body>
 
 
 <!--Inbuild script files-->
-  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
- <!-- <script src="https://raw.github.com/angular/angular.js/master/src/ngResource/resource.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 
 <!--Custom Script files-->
 <script src="module/demo.module.js"></script>
 <script src="module/demo.config.js"></script>
-<script src="module/demo.controller.js"></script>
-<script src="module/demoService.js"></script>
+<script src="module/user/user.controller.js"></script>
+<script src="module/dashboard/dashboard.module.js"></script>
+<script src="module/dashboard/dashboard.controller.js"></script>
+<script src="module/dashboard/dashboardService.js"></script>
+
+
+
 <script src="module/demo.resourse.js"></script>
+
+
 
 
 </body>

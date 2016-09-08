@@ -11,7 +11,7 @@
     function demoConfig($stateProvider, $urlRouterProvider,$locationProvider){
         //
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/state1");
+        $urlRouterProvider.otherwise("/state2");
         //
         // Now set up the states
         $stateProvider
@@ -19,8 +19,14 @@
                 url: "/state1",
                 templateUrl: "partials/demo.html",
                 controller:'demoController'
+            })
+            .state('state2', {
+                url: "/state2",
+                templateUrl: "partials/dashboard.html",
+                controller:'dashboardController'
             });
 
-
+        $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
     }
 })();

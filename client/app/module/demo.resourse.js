@@ -38,6 +38,17 @@
             'deleteUser':{
                 method : 'POST',
                 url: '/deleteUser'
+            },
+            'getUser':{
+                method : 'POST',
+                isArray:true,
+                url: '/getUser'
+            },
+
+            'editUser':{
+                method : 'POST',
+
+                url: '/editUser'
             }
         }
     }

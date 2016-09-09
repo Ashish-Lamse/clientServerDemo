@@ -5,30 +5,87 @@
 (function(){
     angular.module('dashboardModule')
         .controller('dashboardController',dashboardController);
-        dashboardController.$inject=['$scope','dashboardService'];
+        dashboardController.$inject=['$scope','dashboardService','$uibModal'];
 
-        function dashboardController($scope,dashboardService){
+        function dashboardController($scope,dashboardService,$uibModal){
+            var dc=this;
 
-            $scope.deleteUser=function(firstname,lastname){
+            dc.deleteUser=function(id){
 
-                var query = {firstName:firstname, lastName: lastname};
+                    $uibModal.open({
+                        templateUrl: 'partials/deleteUser.html',
+                        controller: function($scope,$uibModalInstance){
+                            $scope.ok=function(){
+                                var query = {id:id};
 
-                dashboardService.deleteUser(query).then(function(res){
-                    if(res){
-                       console.log("say recored has deleted")
-                    }
-                })
+                                 dashboardService.deleteUser(query).then(function(res){
+                                 if(res){
+                                     dc.getAllUser();
+                                 }
+                                 });
+
+                                $uibModalInstance.dismiss('cancel');
+                            };
+
+                            $scope.can=function(){
+                                $uibModalInstance.dismiss('cancel');
+                            }
+                        }
+                    });
+
+
+
             };
 
-            $scope.getAllUser= function getAllUser(){
+            dc.getUser=function(id){
+
+                $uibModal.open({
+                    templateUrl:'partials/editUser.html',
+                    controller:function($scope,$uibModalInstance){
+                        $scope.user={firstName:'',lastName:''};
+                        var query = {id:id};
+
+                        dashboardService.getUser(query).then(function(res){
+                            if(res){
+                                console.log(res);
+                                $scope.user.firstName=res[0].firstname;
+                                $scope.user.lastName=res[0].lastname;
+                                $scope.id=res[0]._id;
+
+                                console.log("response id"+ $scope.id)
+                            }
+                        });
+
+                        $scope.ok=function(firstname,lastname){
+                            var query = {firstname:firstname,lastname:lastname,id:$scope.id};
+
+                            dashboardService.editUser(query).then(function(res){
+                               if(res){
+
+                                   dc.getAllUser();
+                               }
+                            });
+
+                            $uibModalInstance.dismiss('cancel');
+                        };
+
+                        $scope.cancle=function(){
+                            $uibModalInstance.dismiss('cancel');
+                        }
+                    }
+                });
+
+            };
+
+            dc.getAllUser= function getAllUser(){
                 dashboardService.getUserDetails().then(function(res){
                     if(res){
-                        $scope.allUsersData=res;
+                        dc.allUsersData=res;
                     }
                 })
             };
 
-            $scope.getAllUser();
+            dc.getAllUser();
 
         }
 

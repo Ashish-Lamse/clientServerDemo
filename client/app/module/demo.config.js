@@ -23,7 +23,8 @@
             .state('state2', {
                 url: "/state2",
                 templateUrl: "partials/dashboard.html",
-                controller:'dashboardController'
+                controller:'dashboardController',
+                controllerAs:'dc'
             });
 
         $locationProvider.html5Mode(true);

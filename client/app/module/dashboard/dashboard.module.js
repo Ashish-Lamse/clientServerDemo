@@ -3,5 +3,5 @@
  */
 
 (function(){
-    angular.module('dashboardModule',['ngResource']);
+    angular.module('dashboardModule',['ngResource','ui.bootstrap.tpls']);
 })();

@@ -1,7 +1,7 @@
+<!--
 <!DOCTYPE html>
 <html ng-app="demoApp">
-<!--<base href="./app"/>-->
-
+&lt;!&ndash;<base href="./app"/>&ndash;&gt;
 <head>
   <base href="/" />
   <title>My AngularJS App</title>
@@ -28,21 +28,16 @@
 
 
 
-
-
-
-</body>
-
-
-<!--Inbuild script files-->
+&lt;!&ndash;Inbuild script files&ndash;&gt;
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/angular-resource/angular-resource.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-<!--Custom Script files-->
+&lt;!&ndash;Custom Script files&ndash;&gt;
 <script src="module/demo.module.js"></script>
 <script src="module/demo.config.js"></script>
 <script src="module/user/user.controller.js"></script>
@@ -60,3 +55,295 @@
 </body>
 
 </html>
+
+
+-->
+
+
+
+<!--start from here-->
+
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<!--<base href="./app"/>-->
+<head>
+  <base href="/" />
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <style>
+    .heading{
+      color: #fff;
+      text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+      font: 30px 'ChunkFiveRegular';
+    }
+    /*!
+ * Start Bootstrap - Simple Sidebar (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Toggle Styles */
+
+    #wrapper {
+      padding-left: 0;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    #wrapper.toggled {
+      padding-left: 250px;
+    }
+
+    #sidebar-wrapper {
+      z-index: 1000;
+      position: fixed;
+      left: 250px;
+      width: 0;
+      height: 100%;
+      margin-left: -250px;
+      overflow-y: auto;
+      background: #000;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -o-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+      width: 250px;
+    }
+
+    #page-content-wrapper {
+      width: 100%;
+      position: absolute;
+      padding: 15px;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+      position: absolute;
+      margin-right: -250px;
+    }
+
+    /* Sidebar Styles */
+
+    .sidebar-nav {
+      position: absolute;
+      top: 0;
+
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      text-indent: 20px;
+      line-height: 40px;
+    }
+
+    .sidebar-nav li a {
+      display: block;
+      text-decoration: none;
+      color: #999999;
+    }
+
+    .sidebar-nav li a:hover {
+      text-decoration: none;
+      color: #fff;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .sidebar-nav li a:active,
+    .sidebar-nav li a:focus {
+      text-decoration: none;
+    }
+
+    .sidebar-nav > .sidebar-brand {
+      height: 65px;
+      font-size: 18px;
+      line-height: 60px;
+    }
+
+    .sidebar-nav > .sidebar-brand a {
+      color: #999999;
+    }
+
+    .sidebar-nav > .sidebar-brand a:hover {
+      color: #fff;
+      background: none;
+    }
+
+    @media(min-width:768px) {
+      #wrapper {
+        padding-left: 250px;
+      }
+
+      #wrapper.toggled {
+        padding-left: 0;
+      }
+
+      #sidebar-wrapper {
+        width: 250px;
+      }
+
+      #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+      }
+
+      #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+      }
+
+      #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #1a0000;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h4 class="heading">TODOApp With Server</h4>
+    </div>
+  </div>
+</nav><nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#" ui-sref="state1">Add User</a></li>
+        <li class="active"><a href="#" ui-sref="state2">Show Dashboard</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav text-left">
+
+
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="#">
+              User Information
+            </a>
+          </li>
+
+          <li>
+            <a ui-sref="state2">Show Dashboard</a>
+          </li>
+
+          <li>
+            <a ui-sref="state1">Add User</a>
+          </li>
+
+        </ul>
+
+
+    </div>
+
+    <div class="col-sm-10 text-left">
+      <div ui-view></div>
+    </div>
+
+
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>www.semanticbitsindia.com</p>
+</footer>
+<!--Inbuild script files-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+<!--Custom Script files-->
+<script src="module/demo.module.js"></script>
+<script src="module/demo.config.js"></script>
+<script src="module/user/user.controller.js"></script>
+<script src="module/dashboard/dashboard.module.js"></script>
+<script src="module/dashboard/dashboard.controller.js"></script>
+<script src="module/dashboard/dashboardService.js"></script>
+
+
+
+<script src="module/demo.resourse.js"></script>
+
+
+
+
+</body>
+</html>
+

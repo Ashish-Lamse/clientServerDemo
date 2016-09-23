@@ -11,20 +11,40 @@
     function demoConfig($stateProvider, $urlRouterProvider,$locationProvider){
         //
         // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/state2");
+        $urlRouterProvider.otherwise("/login");
         //
         // Now set up the states
         $stateProvider
             .state('state1', {
                 url: "/state1",
-                templateUrl: "partials/demo.html",
-                controller:'demoController'
+                templateUrl: "partials/registerUser.html",
+                controller:'registerUserController'
             })
             .state('state2', {
                 url: "/state2",
                 templateUrl: "partials/dashboard.html",
                 controller:'dashboardController',
                 controllerAs:'dc'
+            })
+            .state('login', {
+                url: "/login",
+                templateUrl: "partials/loginView.html",
+                controller:'LoginController',
+                controllerAs:'lc'
+            })
+            .state('forgotpassword', {
+                url: "/forgotpassword",
+                templateUrl: "partials/forgotpasswordView.html",
+                controller:'forgotpasswordController',
+                controllerAs:'fc'
+
+            })
+            .state('changepassword', {
+                url: "/changepassword",
+                templateUrl: "partials/change-password.html",
+                controller:'changepasswordController',
+                controllerAs:'cc'
+
             });
 
         $locationProvider.html5Mode(true);

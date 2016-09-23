@@ -3,6 +3,13 @@
  */
 
 (function(){
-    angular.module('demoApp',['ngResource','ui.router','ui.bootstrap','dashboardModule']);
+    angular.module('demoApp',['ngResource',
+                                'ui.router',
+                                'ui.bootstrap',
+                                'dashboardModule',
+                                'login.module',
+                                'ngMessages',
+                                'forgotpasswordModule',
+                                'changepasswordModule']);
 })();
 

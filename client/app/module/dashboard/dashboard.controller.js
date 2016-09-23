@@ -5,10 +5,12 @@
 (function(){
     angular.module('dashboardModule')
         .controller('dashboardController',dashboardController);
-        dashboardController.$inject=['$scope','dashboardService','$uibModal'];
+        dashboardController.$inject=['$rootScope','dashboardService','$uibModal'];
 
-        function dashboardController($scope,dashboardService,$uibModal){
+        function dashboardController($rootScope,dashboardService,$uibModal){
+
             var dc=this;
+            $rootScope.currentWindow='Dashboard Window';
 
             dc.deleteUser=function(id){
 
@@ -61,7 +63,6 @@
 
                             dashboardService.editUser(query).then(function(res){
                                if(res){
-
                                    dc.getAllUser();
                                }
                             });

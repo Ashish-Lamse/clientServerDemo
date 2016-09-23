@@ -5,9 +5,12 @@ var express=require('express');
 var path=require('path');
 var app=express();
 var bodyParser=require('body-parser');
+/*var mongoose=require('mongoose');*/
+var config=require('./_config');
 
-var mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost/userdb');
+require('./dbConnection/dbConnection')(app);
+
+/*var User=require('./model/userModel')(mongoose);*/
 
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
@@ -18,7 +21,8 @@ app.set('views', __dirname + '/files');
 var id=null;
 
 
-var user=mongoose.model('UserRecored',{user:Object});
+
+
 
 app.use(express.static(path.join(__dirname, '../client')));
 // This covers serving up the index page
@@ -31,20 +35,13 @@ app.use(function(err, req, res, next) {
 });
 
 
-var userScema = mongoose.Schema({
- firstname: String,
-  lastname: String
-});
-
-var User = mongoose.model('User', userScema);
-
-
 /*list of operaion's performs on database */
-require('./routes/insert')(app,User);
-require('./routes/getSingleUser')(app,User);
-require('./routes/selectAllUser')(app,User);
-require('./routes/editUser')(app,User);
-require('./routes/deleteUser')(app,User);
+require('./routes/UserOperation')(app);
+require('./routes/mailSend')(app,express);
+require('./routes/loginOperation')(app);
+
+
+
 
 module.exports = app;
 

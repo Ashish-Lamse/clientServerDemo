@@ -29,6 +29,12 @@
                 method : 'POST',
                 url: '/insert'
             },
+
+            'mailSend':{
+                method : 'POST',
+                url: '/mailSend'
+            },
+
             'getUserRecored':{
                 method : 'GET',
                 isArray:true,
@@ -47,8 +53,21 @@
 
             'editUser':{
                 method : 'POST',
-
                 url: '/editUser'
+            },
+
+            'checkAuthentication':{
+                method:'POST',
+                url:'/checkAuthentication'
+            },
+
+            'forgotPassword': {
+                method: 'POST',
+                url: '/forgotPassword'
+            },
+            'changePassword':{
+                method:'POST',
+                url:'/changePassword'
             }
         }
     }

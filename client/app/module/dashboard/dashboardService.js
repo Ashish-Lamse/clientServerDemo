@@ -11,8 +11,8 @@ angular.module('dashboardModule')
         var service = {
             getUserDetails : getUserDetails,
             deleteUser     : deleteUser,
-            getUser       : getUser,
-            editUser:editUser
+            getUser        : getUser,
+            editUser       : editUser
         };
 
         return service;

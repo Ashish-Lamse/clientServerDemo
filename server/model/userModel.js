@@ -1,13 +1,16 @@
 /**
  * Created by Ashish Lamse on 9/9/16.
  */
-var userModel=function(mongoose){
-    var userScema = mongoose.Schema({
-        firstname: String,
-        lastname: String
+var mongoose=require('mongoose');
+
+       var userScema = mongoose.Schema({
+        firstname   : String,
+        lastname    : String,
+           email    :{type:String, index: { unique: true, dropDups: true }},
+        password    :String
     });
 
-    var User = mongoose.model('User', userScema);
-};
+    var user= mongoose.model('User', userScema);
 
-module.exports=userModel;
+
+module.exports=user;

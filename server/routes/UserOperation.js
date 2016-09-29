@@ -3,10 +3,20 @@
  */
 
 var User = require('../model/userModel');
+var randomstring = require("randomstring");
 
-var UserOperation=function(app){
+var UserOperation=function(app,acl){
     app.post('/insert',function(req,res){
-        var usr=new User({firstname:req.body.firstName,lastname:req.body.lastName,email:req.body.email,password:req.body.password});
+        var passwordToken = randomstring.generate(8)+ Date.now();
+        var usr=new User(
+            {
+                firstname:req.body.firstName,
+                lastname:req.body.lastName,
+                email:req.body.email,
+                password:req.body.password,
+                role:req.body.role,
+                passwordToken: passwordToken
+            });
 
         usr.save(function(err,data){
             if (err)

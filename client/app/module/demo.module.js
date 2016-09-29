@@ -10,6 +10,8 @@
                                 'login.module',
                                 'ngMessages',
                                 'forgotpasswordModule',
-                                'changepasswordModule']);
+                                'changepasswordModule',
+                                'mm.acl'
+    ]);
 })();
 

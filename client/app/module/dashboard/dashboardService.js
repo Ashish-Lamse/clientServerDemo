@@ -63,20 +63,23 @@ angular.module('dashboardModule')
 
         function getUserDetails(){
 
-            var deferred = $q.defer();
-            demoApi.getUserRecored().$promise.then(searchDetailsComplete).catch(searchDetailsFailed);
+                var deferred = $q.defer();
+                demoApi.getUserRecored().$promise.then(searchDetailsComplete).catch(searchDetailsFailed);
 
-            function searchDetailsComplete(response) {
+                function searchDetailsComplete(response) {
 
-                deferred.resolve(response);
+                    deferred.resolve(response);
+                }
+
+                function searchDetailsFailed(error) {
+                    deferred.reject(error)
+                }
+                return deferred.promise;
+
             }
 
-            function searchDetailsFailed(error) {
-                deferred.reject(error)
-            }
-            return deferred.promise;
 
-        }
+
     }
 
 })();

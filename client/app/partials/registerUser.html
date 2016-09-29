@@ -4,7 +4,7 @@
         <h3 class="heading">Register User</h3>
         <hr>
     </div>
-    <form ng-submit="insertInfo(user.firstName,user.lastName,user.email,user.password)" class="text-center" name="form" role="form">
+    <form ng-submit="insertInfo(user.firstName,user.lastName,user.email,user.password,user.role)" class="text-center" name="form" role="form">
         <div class="alert-danger">{{exist}}</div>
         <div class="row">
             <div class="col-sm-6">
@@ -40,10 +40,16 @@
                     <span ng-show="form.password.$error.required && form.password.$invalid">
                         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>   password is Required</span>
                 </div>
-
-
             </div>
-
+            <div class="row">
+                <div class="col-sm-6">
+                    <select name="singleSelect" ng-model="user.role">
+                        <option value="">---Please select Role---</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+            </div>
           <div class="form-actions text-center">
             <input type="submit" value="Register" class="btn btn-success"/>
           </div>

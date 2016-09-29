@@ -5,9 +5,9 @@
 (function(){
    angular.module('changepasswordModule')
        .controller('changepasswordController',changepasswordController);
-    changepasswordController.$inject=['changepasswordService','$rootScope'];
+    changepasswordController.$inject=['changepasswordService','$rootScope','$location'];
 
-    function changepasswordController(changepasswordService,$rootScope){
+    function changepasswordController(changepasswordService,$rootScope,$location){
         var cc=this;
         cc.currentUsername=$rootScope.username;
         cc.resetPassword=resetPassword;
@@ -22,7 +22,8 @@
                 changepasswordService.changePassword({username:cc.currentUsername,password:cc.password}).then(function(res){
                    if(res.status){
                       alert('Your password has changed successfully...!')
-                   }
+                       $location.path('/login')
+                       }
                     else {
                        console.log('Error'+res);
                    }

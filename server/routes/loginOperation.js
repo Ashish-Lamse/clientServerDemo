@@ -26,13 +26,14 @@ var loginOperation= function (app) {
 
     app.post('/forgotPassword',function(req,res){
         User.find({email:req.body.username},function(err,data){
-            console.log(req.body.username+"got it now");
-            if(err){
+           if(err){
                 console.log('Error :'+err)
             }
 
             else {
                 if(data.length>0){
+
+
                     res.json({data:data,status:true});
                 }
                 else {

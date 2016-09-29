@@ -5,12 +5,13 @@
 (function(){
     angular.module('dashboardModule')
         .controller('dashboardController',dashboardController);
-        dashboardController.$inject=['$rootScope','dashboardService','$uibModal'];
+        dashboardController.$inject=['$rootScope','dashboardService','$uibModal','$location'];
 
-        function dashboardController($rootScope,dashboardService,$uibModal){
+        function dashboardController($rootScope,dashboardService,$uibModal,$location){
 
             var dc=this;
             $rootScope.currentWindow='Dashboard Window';
+
 
             dc.deleteUser=function(id){
 
@@ -79,11 +80,18 @@
             };
 
             dc.getAllUser= function getAllUser(){
-                dashboardService.getUserDetails().then(function(res){
-                    if(res){
-                        dc.allUsersData=res;
-                    }
-                })
+                if($rootScope.isAuthenticated)
+                {
+                    dashboardService.getUserDetails().then(function(res){
+                        if(res){
+                            dc.allUsersData=res;
+                        }
+                    });
+                }
+
+                else {
+                    $location.path('/login');
+                }
             };
 
             dc.getAllUser();

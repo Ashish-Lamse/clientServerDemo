@@ -7,7 +7,9 @@ var mongoose=require('mongoose');
         firstname   : String,
         lastname    : String,
            email    :{type:String, index: { unique: true, dropDups: true }},
-        password    :String
+        password    :String,
+           role     :String,
+           passwordToken:String
     });
 
     var user= mongoose.model('User', userScema);

@@ -68,6 +68,11 @@
             'changePassword':{
                 method:'POST',
                 url:'/changePassword'
+            },
+
+            'forgotPasswordMail':{
+                method:'POST',
+                url:'/forgotPasswordMail'
             }
         }
     }

@@ -64,7 +64,7 @@ acl.isAllowed('admin','/insert',['get','post'], function(err, res){
 acl.middleware();
 
 /*list of operaion's performs on database */
-require('./routes/UserOperation')(app,acl);
+require('./routes/allRoutes')(app,acl);
 require('./routes/mailSend')(app,express);
 require('./routes/loginOperation')(app);
 

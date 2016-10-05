@@ -25,6 +25,7 @@ var mailDelivery=function(user,pass,from,to,subject,text){
 
         }else{
             console.log('Message sent: ' + info.response);
+            return true;
         };
     });
 };

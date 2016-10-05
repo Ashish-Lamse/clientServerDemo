@@ -5,8 +5,8 @@
 var User = require('../model/userModel');
 var randomstring = require("randomstring");
 
-var UserOperation=function(app,acl){
-    app.post('/insert',function(req,res){
+var UserOperation={
+    insert:function(req,res){
         var passwordToken = randomstring.generate(8)+ Date.now();
         var usr=new User(
             {
@@ -18,21 +18,21 @@ var UserOperation=function(app,acl){
                 passwordToken: passwordToken
             });
 
-        usr.save(function(err,data){
+        usr.save(function(err, data){
             if (err)
                 res.json({status:false,data:err});
             else {
                 res.json({status:true,data:data});
             }
-
-
         })
 
-    });
+    },
 
     /*get recored from database*/
-    app.post('/getUser',function(req,res){
-       User.find({_id:req.body.id},function(err,data){
+
+     getUser:function(req,res){
+
+       User.find({_id:req.body.id},function(err, data){
             if(err){
                 console.log(err);
             }
@@ -41,23 +41,23 @@ var UserOperation=function(app,acl){
                 res.send(data);
             }
         });
-    });
-
+    },
     /*Get all All user records*/
-    app.get('/getUserRecored',function(req,res){
+
+
+  getUserRecored:function(req,res){
         User.find(function (err, users) {
             if (err) {
-                next(err);
+                console.log('Error:'+err);
             } else {
-
-                res.send(JSON.stringify(users));
-                res.end();
+                res.send(users);
             }
         })
-    });
+    },
 
     /*edit user into database*/
-    app.post('/editUser',function(req,res){
+
+     editUser:function(req,res){
         console.log(req.body.firstname);
         console.log(req.body.lastname);
 
@@ -77,29 +77,23 @@ var UserOperation=function(app,acl){
                 }
             }
         )
-    });
+    },
 
     /*delete record from database*/
-    app.post('/deleteUser',function(req,res){
 
+deleteUser:function(req,res){
 
-
-        console.log(req.body.id+"===Server");
-
-        var delusr=new User({_id:req.body._id});
-
-        User.remove({_id : req.body.id},function(err,data){
+        User.remove({id : req.body.id},function(err,data){
             if(err){
                 console.log(err+"Successfully not deleted")
             }
             else {
                 res.send(data);
-
             }
 
         });
 
-    });
+    }
 };
 
 

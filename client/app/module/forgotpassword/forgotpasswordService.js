@@ -7,13 +7,29 @@
 
     forgotpasswordService.$inject=['demoApi','$q'];
     function forgotpasswordService(demoApi,$q){
+            var deffered=$q.defer();
             var service={
-                forgotPassword:forgotPassword
+                forgotPassword:forgotPassword,
+                forgotPasswordMail:forgotPasswordMail
+
             };
         return service;
+        function forgotPasswordMail(data){
+            demoApi.forgotPasswordMail(data).$promise.then(getSuccessMailData).catch(getFailureMailData);
+
+            function getSuccessMailData(result){
+                deffered.resolve(result)
+            }
+
+            function getFailureMailData(failure){
+                deffered.reject(failure)
+            }
+
+            return deffered.promise;
+        }
 
         function forgotPassword(username){
-            var deffered=$q.defer();
+
 
             demoApi.forgotPassword(username).$promise.then(validUser).catch(invalidUser);
 

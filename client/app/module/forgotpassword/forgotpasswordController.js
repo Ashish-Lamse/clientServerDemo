@@ -15,8 +15,19 @@
 
             forgotpasswordService.forgotPassword({username:username}).then(function(res){
                     if(res.status){
+
+                        forgotpasswordService.forgotPasswordMail({
+                            _from:'ashish.lamse@gmail.com',
+                            username:res.data[0].email,
+                            passwordToken:res.data[0].passwordToken
+                        }).then(function(res){
+                           if(res.status){
+                               fc.forgotPasswordMsg='An e-mail has been sent with instructions to reset your password.';
+                           }
+                        });
+
                         $rootScope.username=username;
-                        $location.path('/changepassword')
+                        /*$location.path('/changepassword')*/
                     }
                 else {
                         fc.error = 'Username is not matched please give correct username';

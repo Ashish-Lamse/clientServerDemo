@@ -3,12 +3,12 @@
  */
 
 var User=require('../model/userModel');
-var loginOperation= function (app) {
+var loginOperation={
 
-    app.post('/checkAuthentication',function(req,res){
+    checkAuthentication:function(req,res){
        User.find({email:req.body.username,password:req.body.password},function(error,data){
            if(error){
-               next(error);
+               console.log('Error:'+error);
            }
             else {
                if(data.length>0)
@@ -16,24 +16,20 @@ var loginOperation= function (app) {
                    res.json({data:data, isAuthenticated:true});
                }
                else {
-                   //res.status(401).send();        // HTTP status 404: NotFound
-                   res.json({data:data, isAuthenticated:false});
+                    res.json({data:data, isAuthenticated:false});
                }
            }
         });
-    });
+    },
 
-
-    app.post('/forgotPassword',function(req,res){
+    forgotPassword:function(req,res){
         User.find({email:req.body.username},function(err,data){
            if(err){
                 console.log('Error :'+err)
-            }
+           }
 
             else {
                 if(data.length>0){
-
-
                     res.json({data:data,status:true});
                 }
                 else {
@@ -42,29 +38,44 @@ var loginOperation= function (app) {
 
             }
         })
-    });
 
-    app.post('/changePassword',function(req,res){
-        console.log('changepassword data:'+req.body.username+" "+req.body.password);
+    },
+    getUserName:function(req,res){
+        console.log('hello'+'=======================================================')
+
+        var username = req.query.username;
+        var token = req.query.passwordtoken;
+
+
+        console.log(username+'ssssssssssssssssssssssssssssssssssss');
+        console.log(token+'ssssssssssssssssssssssssssssssssssss');
+
+        res.json({username:username,token:token});
+    },
+
+    changePassword:function(req,res){
+        console.log('hello'+'=======================================================')
+
+        var username = req.query.username;
+        var token = req.query.passwordtoken;
+
+        console.log('hello'+username);
+        console.log('hello'+token);
         User.update(
-            { email: req.body.username },
-            {
-                password:req.body.password
-            },
+            { email: req.query.username},
+            { passwordToken:req.query.passwordtoken },
             { upsert: true },function(err,data){
                 if(err){
-                    console.log('Error :'+error)
+                    console.log('Error :'+err)
                 }
                 else {
                     if(data){
-                        console.log('changepassword if');
-                        res.json({status:true})
+                        res.send({status:true})
                     }
-
                 }
             }
         )
-    });
+    }
 
 
 };

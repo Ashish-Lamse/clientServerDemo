@@ -26,7 +26,7 @@
                            }
                         });
 
-                        $rootScope.username=username;
+
                         /*$location.path('/changepassword')*/
                     }
                 else {

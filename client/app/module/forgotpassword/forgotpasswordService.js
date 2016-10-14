@@ -29,8 +29,6 @@
         }
 
         function forgotPassword(username){
-
-
             demoApi.forgotPassword(username).$promise.then(validUser).catch(invalidUser);
 
             function validUser(result){

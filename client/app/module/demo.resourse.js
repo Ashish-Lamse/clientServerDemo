@@ -73,7 +73,13 @@
             'forgotPasswordMail':{
                 method:'POST',
                 url:'/forgotPasswordMail'
+            },
+            'getUserName':{
+                method:'GET',
+                url:'/getUserName'
             }
+
+
         }
     }
 }());

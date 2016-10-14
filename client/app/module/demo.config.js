@@ -33,29 +33,24 @@
         })
 
             .state('state2', {
-
                 url: "/state2",
                 templateUrl: "partials/dashboard.html",
                 controller:'dashboardController',
                 controllerAs:'dc'
             })
             .state('login', {
-
                 url: "/login",
                 templateUrl: "partials/loginView.html",
                 controller:'LoginController',
                 controllerAs:'lc'
             })
             .state('forgotpassword', {
-
                 url: "/forgotpassword",
                 templateUrl: "partials/forgotpasswordView.html",
                 controller:'forgotpasswordController',
                 controllerAs:'fc'
-
             })
             .state('changepassword', {
-
                 url: "/changepassword",
                 templateUrl: "partials/change-password.html",
                 controller:'changepasswordController',

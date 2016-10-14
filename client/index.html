@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html ng-app="demoApp">
+<!--<base href="./app"/>-->
+<head>
+
+  <title>My AngularJS App</title>
+  <base href="/index.html" />
+  <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="app/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="app/css/application.css">
+</head>
+<title>ToDoApp with Client Server</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h5 class="heading">TODOApp With Server</h5>
+    </div>
+
+
+  </div>
+</nav><nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active">
+
+          <button type="button" class="btn btn-info {{$root.currentUser.role==='user'?'hidden':'show'}}" ui-sref="state1" style="margin-top: 10px">
+            <i class="fa fa-registered" aria-hidden="true">&nbsp;&nbsp;Register User</i>
+        </button>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          {{$rootScope.currentUser.firstname}}
+        </li>
+        <li>
+          <button ng-click="logout()" style="margin-top: 10px">
+            <span class="glyphicon glyphicon-log-in"></span> Log Out
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10 text-left">
+      <div ui-view></div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center" id="footer">
+  <p>www.semanticbitsindia.com</p>
+</footer>
+<!--Inbuild script files-->
+<script src="app/bower_components/angular/angular.js"></script>
+<script src="app/bower_components/angular-route/angular-route.js"></script>
+<script src="app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="app/bower_components/angular-resource/angular-resource.min.js"></script>
+<script src="app/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="app/bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="app/bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="app/bower_components/angular-acl/angular-acl.js"></script>
+
+
+
+<!--Custom Script files-->
+<script src="app/module/demo.module.js"></script>
+<script src="app/module/demo.config.js"></script>
+<script src="app/module/demo.resourse.js"></script>
+<script src="app/module/todo.run.js"></script>
+<script src="app/module/user/registerUser.controller.js"></script>
+<script src="app/module/dashboard/dashboard.module.js"></script>
+<script src="app/module/dashboard/dashboard.controller.js"></script>
+<script src="app/module/dashboard/dashboardService.js"></script>
+<script src="app/module/login/login.module.loginModule.js"></script>
+<script src="app/module/login/login.controller.authenticationController.js"></script>
+<script src="app/module/login/login.service.authenticationService.js"></script>
+<script src="app/module/forgotpassword/forgotpasswordModule.js"></script>
+<script src="app/module/forgotpassword/forgotpasswordController.js"></script>
+<script src="app/module/forgotpassword/forgotpasswordService.js"></script>
+<script src="app/module/changepassword/changepasswordModule.js"></script>
+<script src="app/module/changepassword/changepasswordController.js"></script>
+<script src="app/module/changepassword/changepasswordService.js"></script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+

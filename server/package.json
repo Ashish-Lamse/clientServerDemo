@@ -3,9 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "test": "./node_modules/.bin/_mocha --reporter spec test",
-    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha ./test/server.spec.js"
+    "devstart": "NODE_ENV=dev nodemon --debug=3001 ./bin/www",
+    "test": "NODE_ENV=test istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive test"
   },
   "dependencies": {
     "body-parser": "~1.13.2",

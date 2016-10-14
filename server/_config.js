@@ -1,13 +1,25 @@
-/**
- * Created by Ashish Lamse on 12/9/16.
- */
 
-var config = {};
+module.exports = function(){
+   console.log(process.env.NODE_ENV)
+    switch(process.env.NODE_ENV){
+        case 'dev':
 
-config.mongoURI = {
-    development: 'mongodb://localhost/userdb',
-    test: 'mongodb://localhost/node-test'
+            return {
+                db:{
+
+                    url: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/userdb'
+                }
+            };
+
+        case 'test':
+
+            return {
+                db:{
+                    url: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/node-test'
+                }
+            };
+
+        default:
+            return {};
+    }
 };
-
-module.exports = config;
-

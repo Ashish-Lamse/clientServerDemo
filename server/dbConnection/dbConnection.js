@@ -1,18 +1,36 @@
-/**
- * Created by Ashish Lamse on 13/9/16.
- */
-var config=require('../_config');
-var mongoose= require('mongoose');
+var mongoose = require('mongoose');
+var Q = require('q');
 
-var mong=function(app){
+var DBConnection = function(app, conf) {
+    var deferred = Q.defer();
+// CONNECTION EVENTS
+    mongoose.connect(conf.db.url);
 
-  return  mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
-        if(err) {
-            console.log('Error connecting to the database. ' + err);
-        } else {
-            console.log('Connected to Database: ' + config.mongoURI[app.settings.env]);
-        }
+// When successfully connected
+    mongoose.connection.on('connected', function () {
+        console.log('Mongoose default connection open to ' + conf.db.url);
+        deferred.resolve();
     });
+
+// If the connection throws an error
+    mongoose.connection.on('error',function (err) {
+        console.log('Mongoose default connection error: ' + err);
+        process.exit(1);
+    });
+
+// When the connection is disconnected
+    mongoose.connection.on('disconnected', function () {
+        console.log('Mongoose default connection disconnected');
+    });
+
+// If the Node process ends, close the Mongoose connection
+    process.on('SIGINT', function() {
+        mongoose.connection.close(function () {
+            console.log('Mongoose default connection disconnected through app termination');
+            process.exit(0);
+        });
+    });
+    return deferred.promise;
 };
 
-module.exports=mong;
+module.exports = DBConnection;

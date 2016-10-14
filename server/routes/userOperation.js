@@ -1,7 +1,6 @@
 /**
  * Created by Ashish Lamse on 14/9/16.
  */
-
 var User = require('../model/userModel');
 var randomstring = require("randomstring");
 
@@ -20,12 +19,11 @@ var UserOperation={
 
         usr.save(function(err, data){
             if (err)
-                res.json({status:false,data:err});
+                console.log('Error :'+err);
             else {
                 res.json({status:true,data:data});
             }
         })
-
     },
 
     /*get recored from database*/
@@ -58,8 +56,6 @@ var UserOperation={
     /*edit user into database*/
 
      editUser:function(req,res){
-        console.log(req.body.firstname);
-        console.log(req.body.lastname);
 
         User.update(
             { _id: req.body.id },
@@ -82,17 +78,14 @@ var UserOperation={
     /*delete record from database*/
 
 deleteUser:function(req,res){
-
-        User.remove({id : req.body.id},function(err,data){
+        User.remove({_id : req.body.id},function(err,data){
             if(err){
                 console.log(err+"Successfully not deleted")
             }
             else {
                 res.send(data);
             }
-
         });
-
     }
 };
 
